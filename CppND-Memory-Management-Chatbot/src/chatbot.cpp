@@ -57,7 +57,11 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
 {
     if (this == &source)
         return *this;
-    delete _image;
+    if(_image != NULL) 
+    {
+        delete _image;
+        _image = NULL;
+    }
     _chatLogic=source._chatLogic;
     _rootNode=source._rootNode;
      _currentNode=source._currentNode;
@@ -87,7 +91,12 @@ ChatBot &ChatBot::operator=(ChatBot &&source)
 {
     if (this == &source)
         return *this;
-    delete _image;
+
+    if(_image != NULL) 
+    {
+        delete _image;
+        _image = NULL;
+    }
 
     _image = source._image;
 
